@@ -5,33 +5,16 @@
     android:background="#CC000000"
     tools:context="${packageName}.${activityClass}" >
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/backgimg" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="26dp"
-        android:src="@drawable/flickassist" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="34dp"
-        android:text="Lights… Camera… Action…!"
-        android:textColor="#e6c92d"
         android:fontFamily="Movie Filmstrip"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="Lights… Camera… Action…!"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#e6c92d" />
 
 </RelativeLayout>
