@@ -9,10 +9,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.util.Log;
 import com.example.flickassist.R;
+import com.example.flickassist.RottenTomatoClient;
 
 public class MovieListFragment extends Fragment {
 
 	private ListView lvMovies;
+	private RottenTomatoClient client;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -28,5 +30,9 @@ public class MovieListFragment extends Fragment {
 		// Assign our view references
 		lvMovies = (ListView) v.findViewById(R.id.lvMovies);
 		return v;
+	}
+	
+	public RottenTomatoClient getClient() {
+		return client;
 	}
 }

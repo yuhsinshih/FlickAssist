@@ -1,4 +1,7 @@
-package com.example.flickassist;
+package com.example.flickassist.activities;
+
+import com.example.flickassist.R;
+import com.example.flickassist.R.layout;
 
 import android.app.Activity;
 import android.content.Intent;
