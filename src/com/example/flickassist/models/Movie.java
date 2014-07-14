@@ -2,6 +2,7 @@ package com.example.flickassist.models;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Movie {
@@ -15,11 +16,56 @@ public class Movie {
 	private String synopsis;
 	private ArrayList<Cast> casts;
 
-	public Movie(JSONObject json) {
-		// TODO Auto-generated constructor stub
+	public static Movie fromJSON(JSONObject json) {
+		Movie movie = new Movie();
+		try {
+			movie.id = json.getInt("id");
+			movie.title = json.getString("title");
+			movie.imdbid = json.getInt("imdbid");
+			movie.runtime = json.getInt("runtime");
+			movie.synopsis = json.getString("synopsis");
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return movie;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public int getImdbId() {
+		return imdbid;
 	}
 	
 	public String getTitle() {
-		return this.title;
+		return title;
 	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public int getRuntime() {
+		return runtime;
+	}
+
+	public int getCritics_score() {
+		return critics_score;
+	}
+
+	public int getAudience_score() {
+		return audience_score;
+	}
+
+	public String getSynopsis() {
+		return synopsis;
+	}
+
+	@Override
+	public String toString() {
+		return title + " (" + year +")";
+	}
+
 }

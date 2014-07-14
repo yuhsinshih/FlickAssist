@@ -18,9 +18,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class MovieArrayAdapter extends ArrayAdapter<Movie>{
 
-	public MovieArrayAdapter(Context context, int resource,
-			int textViewResourceId, List<Movie> objects) {
-		super(context, resource, textViewResourceId, objects);
+	public MovieArrayAdapter(Context context, List<Movie> movies) {
+		super(context, 0, movies);
 		// TODO Auto-generated constructor stub
 	}
 
