@@ -26,18 +26,25 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie>{
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// Get the data item for position
+		Movie movie = getItem(position);
 
 		// Find or inflate the template
 		View v;	// for performance reason
 		if (convertView == null) {
 			LayoutInflater inflator = LayoutInflater.from(getContext());
-//			v = inflator.inflate(R.layout. , parent, false);
 			v = inflator.inflate(R.layout.movie_item, parent, false);
 		} else {
 			v = convertView;
 		}
-		// Find the views within template
 
+		// Find the views within template
+		TextView tvMovieTitle = (TextView) v.findViewById(R.id.tvMovieTitle);
+		tvMovieTitle.setText(movie.getTitle());
+		ImageView ivMovieThumb = (ImageView) v.findViewById(R.id.ivMovieThumb);
+		ivMovieThumb.setImageResource(android.R.color.transparent);
+		ImageLoader imageLoader = ImageLoader.getInstance();
+		imageLoader.displayImage(movie.getPoster_thumb(), ivMovieThumb);
+		
 		// Populate views with movie data
 
 		return v;

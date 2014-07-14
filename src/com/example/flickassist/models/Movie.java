@@ -2,6 +2,7 @@ package com.example.flickassist.models;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,20 +16,57 @@ public class Movie {
 	private int audience_score;
 	private String synopsis;
 	private ArrayList<Cast> casts;
+	private String poster_thumb;
+	private String poster_profile;
+	private String poster_detailed;
+	private String poster_original;
 
-	public static Movie fromJSON(JSONObject json) {
-		Movie movie = new Movie();
+	public Movie (JSONObject json) {
+		JSONObject posters;
+		JSONArray castArray;
 		try {
-			movie.id = json.getInt("id");
-			movie.title = json.getString("title");
-			movie.imdbid = json.getInt("imdbid");
-			movie.runtime = json.getInt("runtime");
-			movie.synopsis = json.getString("synopsis");
+			id = json.getInt("id");
+			title = json.getString("title");
+			imdbid = json.getInt("imdbid");
+			runtime = json.getInt("runtime");
+			synopsis = json.getString("synopsis");
 			
+			posters = json.getJSONObject("posters");
+			poster_thumb = posters.getString("thumbnail");
+			poster_profile = posters.getString("profile");
+			poster_detailed = posters.getString("detailed");
+			poster_original = posters.getString("original");
+			
+			castArray = json.getJSONArray("abridged_cast");
+			casts = new ArrayList<Cast>();
+			for (int i = 0; i < castArray.length(); i++) {
+				casts.add(new Cast(castArray.getJSONObject(i)));
+			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		return movie;
+	}
+	
+	public static ArrayList<Movie> fromJSONArray(JSONArray jsonArray) {
+		if (jsonArray == null)
+			return null;
+		
+		ArrayList<Movie> movies = new ArrayList<Movie>(jsonArray.length());
+		for (int i=0; i < jsonArray.length(); i++) {
+			JSONObject movieJson = null;
+			try {
+				movieJson = jsonArray.getJSONObject(i);
+			} catch (Exception e) {
+				e.printStackTrace();
+				continue;
+			}
+			
+			Movie movie = new Movie(movieJson);
+			if(movie != null) {
+				movies.add(movie);
+			}
+		}
+		return movies;
 	}
 	
 	public int getId() {
@@ -63,6 +101,24 @@ public class Movie {
 		return synopsis;
 	}
 
+	public String getPoster_thumb() {
+		return poster_thumb;
+	}
+
+
+	public String getPoster_profile() {
+		return poster_profile;
+	}
+
+
+	public String getPoster_detailed() {
+		return poster_detailed;
+	}
+
+
+	public String getPoster_original() {
+		return poster_original;
+	}
 	@Override
 	public String toString() {
 		return title + " (" + year +")";

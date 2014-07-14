@@ -10,8 +10,8 @@ import com.example.flickassist.models.Movie;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
-public class InTheaterFragment extends MovieListFragment {
-	
+public class UpcomingFragment extends MovieListFragment {
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,7 +23,7 @@ public class InTheaterFragment extends MovieListFragment {
 		final boolean clearResult = clear;
 
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.get("http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=qg8r8sxqbq268r7mntbt6uy2&page="+page, 
+		client.get("http://api.rottentomatoes.com/api/public/v1.0/lists/movies/upcoming.json?apikey=qg8r8sxqbq268r7mntbt6uy2&page="+page, 
 				new JsonHttpResponseHandler() {
 			public void onSuccess(JSONObject json) {
 //				System.out.println(json.toString());
@@ -44,5 +44,4 @@ public class InTheaterFragment extends MovieListFragment {
 			}
 		});
 	}
-
 }

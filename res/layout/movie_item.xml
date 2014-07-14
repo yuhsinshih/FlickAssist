@@ -5,8 +5,11 @@
 
     <ImageView
         android:id="@+id/ivMovieThumb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/ic_launcher" />
@@ -15,7 +18,7 @@
         android:id="@+id/tvMovieTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/ivMovieThumb"
         android:layout_toRightOf="@+id/ivMovieThumb"
         android:text="Movie Title"
         android:textAppearance="?android:attr/textAppearanceMedium" />

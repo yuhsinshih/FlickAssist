@@ -5,16 +5,14 @@
     android:background="#CC000000"
     tools:context="${packageName}.${activityClass}" >
 
-    <TextView
-        android:id="@+id/textView1"
+    <FrameLayout
+        android:id="@+id/flContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="34dp"
-        android:fontFamily="Movie Filmstrip"
-        android:text="Lights… Camera… Action…!"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#e6c92d" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+    </FrameLayout>
 
 </RelativeLayout>

@@ -20,7 +20,7 @@ public abstract class MovieListFragment extends Fragment {
 	private ArrayList<Movie> movies;
 	private MovieArrayAdapter aMovies;
 	private ListView lvMovies;
-	private RottenTomatoClient client;
+//	private RottenTomatoClient client;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,24 +47,19 @@ public abstract class MovieListFragment extends Fragment {
                 // Add whatever code is needed to append new items to your AdapterView
 
 				customLoadMoreDataFromApi(page);
-                // or customLoadMoreDataFromApi(totalItemsCount); 
 			}
 		});
 		return v;
 	}
 	
-	public RottenTomatoClient getClient() {
-		return client;
-	}
-	
-	public abstract void populateTimeline(int offset, boolean clear);
+	public abstract void populateMovieList(int offset, boolean clear);
 	
 	// Append more data into the adapter
 	public void customLoadMoreDataFromApi(int offset) {
 		// This method probably sends out a network request and appends new data items to your adapter. 
 		// Use the offset value and add it as a parameter to your API request to retrieve paginated data.
 		// Deserialize API response and then construct new objects to append to the adapter
-		populateTimeline(offset, false);
+		populateMovieList(offset, false);
 	}
 	
 	public void clearMovies() {
