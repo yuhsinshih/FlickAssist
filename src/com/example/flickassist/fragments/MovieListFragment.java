@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,19 +16,32 @@ import com.example.flickassist.adapters.MovieArrayAdapter;
 import com.example.flickassist.listeners.EndlessScrollListener;
 import com.example.flickassist.models.Movie;
 
-public abstract class MovieListFragment extends Fragment {
+public class MovieListFragment extends Fragment {
 
 	private ArrayList<Movie> movies;
 	private MovieArrayAdapter aMovies;
 	private ListView lvMovies;
 //	private RottenTomatoClient client;
+	private String title;
+	private int page;
 
+	public static MovieListFragment newInstance(int page, String title) {
+		MovieListFragment fragmentMovieList = new MovieListFragment();
+		Bundle args = new Bundle();
+		args.putInt("page", page);
+		args.putString("title", title);
+		fragmentMovieList.setArguments(args);
+		return fragmentMovieList;
+	}
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// Non-view initialization
 		movies = new ArrayList<Movie>();
 		aMovies = new MovieArrayAdapter(getActivity(), movies);
+//		page = getArguments().getInt("page", 0);
+//		title = getArguments().getString("title");
 	}
 	
 	@Override
@@ -52,7 +66,7 @@ public abstract class MovieListFragment extends Fragment {
 		return v;
 	}
 	
-	public abstract void populateMovieList(int offset, boolean clear);
+	public void populateMovieList(int offset, boolean clear){}
 	
 	// Append more data into the adapter
 	public void customLoadMoreDataFromApi(int offset) {

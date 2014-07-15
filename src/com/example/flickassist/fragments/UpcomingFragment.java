@@ -11,7 +11,16 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class UpcomingFragment extends MovieListFragment {
-
+	
+	public static UpcomingFragment newInstance(int page, String title) {
+		UpcomingFragment fragmentMovieList = new UpcomingFragment();
+		Bundle args = new Bundle();
+		args.putInt("page", page);
+		args.putString("title", title);
+		fragmentMovieList.setArguments(args);
+		return fragmentMovieList;
+	}
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
