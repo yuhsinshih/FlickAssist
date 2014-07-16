@@ -23,7 +23,7 @@
         android:src="@drawable/flickassist" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tvDetailTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView1"

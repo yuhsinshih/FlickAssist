@@ -10,7 +10,7 @@ import android.util.Log;
 
 public class Movie {
 	private String title;
-	private int id;	// int or long?
+	private String id;	// int or long?
 	private int imdbid;
 	private int year;
 	private String runtime;
@@ -28,7 +28,7 @@ public class Movie {
 		JSONObject posters, ratings;
 		JSONArray castArray;
 		try {
-			id = json.getInt("id");
+			id = json.getString("id");
 			title = json.getString("title");
 			year = json.getInt("year");
 			
@@ -79,7 +79,7 @@ public class Movie {
 		return movies;
 	}
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	

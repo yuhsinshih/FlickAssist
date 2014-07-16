@@ -4,5 +4,6 @@
     <string name="app_name">FlickAssist</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_detail">DetailActivity</string>
 
 </resources>

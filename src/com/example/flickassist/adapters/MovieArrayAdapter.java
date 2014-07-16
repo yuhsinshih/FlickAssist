@@ -4,16 +4,16 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.flickassist.R;
+import com.example.flickassist.activities.DetailActivity;
 import com.example.flickassist.models.Movie;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -27,7 +27,7 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie>{
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// Get the data item for position
-		Movie movie = getItem(position);
+		final Movie movie = getItem(position);
 
 		// Find or inflate the template
 		View v;	// for performance reason
@@ -59,7 +59,15 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie>{
 		ImageLoader imageLoader = ImageLoader.getInstance();
 		imageLoader.displayImage(movie.getPoster_profile(), ivMovieThumb);
 
-
+		v.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getContext(), DetailActivity.class);
+				i.putExtra("movie_id", movie.getId());
+				i.putExtra("title", movie.getTitle());
+				getContext().startActivity(i);
+			}
+		});
 		// Populate views with movie data
 
 		return v;
