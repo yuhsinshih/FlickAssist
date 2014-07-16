@@ -18,12 +18,14 @@ import com.example.flickassist.models.Movie;
 
 public class MovieListFragment extends Fragment {
 
+	protected final static int PAGE_LIMIT = 20;
 	private ArrayList<Movie> movies;
 	private MovieArrayAdapter aMovies;
 	private ListView lvMovies;
 //	private RottenTomatoClient client;
 	private String title;
 	private int page;
+	protected int total = 50;	// Set a larger initial value. Will be updated during first API call
 
 	public static MovieListFragment newInstance(int page, String title) {
 		MovieListFragment fragmentMovieList = new MovieListFragment();
@@ -59,8 +61,10 @@ public class MovieListFragment extends Fragment {
 			public void onLoadMore(int page, int totalItemsCount) {
 				// Triggered only when new data needs to be appended to the list
                 // Add whatever code is needed to append new items to your AdapterView
-
-				customLoadMoreDataFromApi(page);
+				// If we already exceed loading all movies, do not make any more call
+				if(page * PAGE_LIMIT < total) {
+					customLoadMoreDataFromApi(page);
+				}
 			}
 		});
 		return v;

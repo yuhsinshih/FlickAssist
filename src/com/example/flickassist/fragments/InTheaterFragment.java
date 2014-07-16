@@ -32,15 +32,15 @@ public class InTheaterFragment extends MovieListFragment {
 		final boolean clearResult = clear;
 
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.get("http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=qg8r8sxqbq268r7mntbt6uy2&page="+page, 
+		client.get("http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=qg8r8sxqbq268r7mntbt6uy2&page_limit="+PAGE_LIMIT+"&page="+page, 
 				new JsonHttpResponseHandler() {
 			public void onSuccess(JSONObject json) {
-//				System.out.println(json.toString());
-//				Log.d("debug", json.toString());
 				if(clearResult == true){
 					clearMovies();
 				}
 				try {
+					total = json.getInt("total");
+//					Log.d("debug", "In theater: "+ total);
 					addAll(Movie.fromJSONArray(json.getJSONArray("movies")));
 				} catch (JSONException e) {
 					e.printStackTrace();
