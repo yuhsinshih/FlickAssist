@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.example.flickassist.R;
 import com.example.flickassist.fragments.InTheaterFragment;
@@ -38,6 +40,12 @@ public class MainActivity extends FragmentActivity {
         setupTabs(vpPager);
     }
     
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//    	MenuInflater inflater = getSupportMenuInflater();
+//    	return super.onCreateOptionsMenu(menu);
+//    }
+
     public static class MyPagerAdapter extends FragmentPagerAdapter {
 	private static int NUM_ITEMS = 2;
 		
