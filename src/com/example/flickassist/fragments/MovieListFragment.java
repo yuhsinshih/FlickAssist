@@ -25,7 +25,7 @@ public class MovieListFragment extends Fragment {
 //	private RottenTomatoClient client;
 	private String title;
 	private int page;
-	protected int total = 50;	// Set a larger initial value. Will be updated during first API call
+	protected int total = 30;	// Set a larger initial value. Will be updated during first API call
 
 	public static MovieListFragment newInstance(int page, String title) {
 		MovieListFragment fragmentMovieList = new MovieListFragment();

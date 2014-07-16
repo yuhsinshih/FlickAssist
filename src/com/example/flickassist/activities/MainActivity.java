@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 
 import com.example.flickassist.R;
+import com.example.flickassist.fragments.BoxOfficeFragment;
 import com.example.flickassist.fragments.InTheaterFragment;
 import com.example.flickassist.fragments.UpcomingFragment;
 import com.example.flickassist.listeners.FragmentTabListener;
@@ -47,7 +48,7 @@ public class MainActivity extends FragmentActivity {
 //    }
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {
-	private static int NUM_ITEMS = 2;
+	private static int NUM_ITEMS = 3;
 		
         public MyPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
@@ -67,6 +68,8 @@ public class MainActivity extends FragmentActivity {
                 return InTheaterFragment.newInstance(0, "In Theater");
             case 1:
                 return UpcomingFragment.newInstance(1, "Upcoming");
+            case 2:
+            	return BoxOfficeFragment.newInstance(2, "Box Office");
             default:
             	return null;
             }
@@ -97,10 +100,20 @@ public class MainActivity extends FragmentActivity {
 		Tab tab2 = actionBar
 			.newTab()
 			.setText("Upcoming")
-			.setTag("UpcomingTimelineFragment")
+			.setTag("UpcomingFragment")
 			.setTabListener(new FragmentTabListener<UpcomingFragment> (
 					R.id.vpPager, this, "Upcoming",
 					UpcomingFragment.class, vpPager));
 		actionBar.addTab(tab2);
+		
+		Tab tab3 = actionBar
+				.newTab()
+				.setText("Box Office")
+				.setTag("BoxOfficeFragment")
+				.setTabListener(new FragmentTabListener<BoxOfficeFragment> (
+						R.id.vpPager, this, "Box Office",
+						BoxOfficeFragment.class, vpPager));
+
+		actionBar.addTab(tab3);
 	}
 }
