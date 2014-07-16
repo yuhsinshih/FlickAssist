@@ -42,16 +42,12 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie>{
 		TextView tvMovieTitle = (TextView) v.findViewById(R.id.tvMovieTitle);
 		tvMovieTitle.setText(movie.getTitle());
 		
-		TextView tvRuntime = (TextView) v.findViewById(R.id.tvRuntime);
-//		Log.d("debug","runtime: "+movie.getRuntime());
-		tvRuntime.setText(movie.getRuntime());
-		
 		ImageView ivMovieThumb = (ImageView) v.findViewById(R.id.ivMovieThumb);
 		ivMovieThumb.setImageResource(android.R.color.transparent);
 		ImageLoader imageLoader = ImageLoader.getInstance();
 		imageLoader.displayImage(movie.getPoster_profile(), ivMovieThumb);
 
-//		Log.d("debug", "thumb: " + movie.getPoster_thumb());
+
 		// Populate views with movie data
 
 		return v;

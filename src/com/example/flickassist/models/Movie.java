@@ -13,7 +13,7 @@ public class Movie {
 	private int id;	// int or long?
 	private int imdbid;
 	private int year;
-	private String runtime;
+	private int runtime;
 	private int critics_score;
 	private int audience_score;
 	private String synopsis;
@@ -29,6 +29,7 @@ public class Movie {
 		try {
 			id = json.getInt("id");
 			title = json.getString("title");
+			year = json.getInt("year");
 			
 			posters = json.getJSONObject("posters");
 			poster_thumb = posters.getString("thumbnail");
@@ -37,7 +38,7 @@ public class Movie {
 			poster_original = posters.getString("original");
 			
 //			imdbid = json.getInt("imdbid");
-			runtime = json.getString("runtime");
+			runtime = json.getInt("runtime");
 			synopsis = json.getString("synopsis");
 		
 			
@@ -89,7 +90,7 @@ public class Movie {
 		return year;
 	}
 
-	public String getRuntime() {
+	public int getRuntime() {
 		return runtime;
 	}
 
@@ -123,6 +124,7 @@ public class Movie {
 	public String getPoster_original() {
 		return poster_original;
 	}
+	
 	@Override
 	public String toString() {
 		return title + " (" + year +")";
