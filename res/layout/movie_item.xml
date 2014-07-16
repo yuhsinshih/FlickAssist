@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/ivMovieThumb"
         android:layout_toRightOf="@+id/ivMovieThumb"
+        android:textColor="#00FFFF"
         android:text="Movie Title"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,11 +41,17 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie>{
 		// Find the views within template
 		TextView tvMovieTitle = (TextView) v.findViewById(R.id.tvMovieTitle);
 		tvMovieTitle.setText(movie.getTitle());
+		
+		TextView tvRuntime = (TextView) v.findViewById(R.id.tvRuntime);
+//		Log.d("debug","runtime: "+movie.getRuntime());
+		tvRuntime.setText(movie.getRuntime());
+		
 		ImageView ivMovieThumb = (ImageView) v.findViewById(R.id.ivMovieThumb);
 		ivMovieThumb.setImageResource(android.R.color.transparent);
 		ImageLoader imageLoader = ImageLoader.getInstance();
-		imageLoader.displayImage(movie.getPoster_thumb(), ivMovieThumb);
-		
+		imageLoader.displayImage(movie.getPoster_profile(), ivMovieThumb);
+
+//		Log.d("debug", "thumb: " + movie.getPoster_thumb());
 		// Populate views with movie data
 
 		return v;

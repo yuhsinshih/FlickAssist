@@ -6,12 +6,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 public class Movie {
 	private String title;
 	private int id;	// int or long?
 	private int imdbid;
 	private int year;
-	private int runtime;
+	private String runtime;
 	private int critics_score;
 	private int audience_score;
 	private String synopsis;
@@ -27,9 +29,6 @@ public class Movie {
 		try {
 			id = json.getInt("id");
 			title = json.getString("title");
-			imdbid = json.getInt("imdbid");
-			runtime = json.getInt("runtime");
-			synopsis = json.getString("synopsis");
 			
 			posters = json.getJSONObject("posters");
 			poster_thumb = posters.getString("thumbnail");
@@ -37,11 +36,16 @@ public class Movie {
 			poster_detailed = posters.getString("detailed");
 			poster_original = posters.getString("original");
 			
-			castArray = json.getJSONArray("abridged_cast");
-			casts = new ArrayList<Cast>();
-			for (int i = 0; i < castArray.length(); i++) {
-				casts.add(new Cast(castArray.getJSONObject(i)));
-			}
+//			imdbid = json.getInt("imdbid");
+			runtime = json.getString("runtime");
+			synopsis = json.getString("synopsis");
+		
+			
+//			castArray = json.getJSONArray("abridged_cast");
+//			casts = new ArrayList<Cast>();
+//			for (int i = 0; i < castArray.length(); i++) {
+//				casts.add(new Cast(castArray.getJSONObject(i)));
+//			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -85,7 +89,7 @@ public class Movie {
 		return year;
 	}
 
-	public int getRuntime() {
+	public String getRuntime() {
 		return runtime;
 	}
 
