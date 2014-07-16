@@ -4,6 +4,8 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import com.activeandroid.util.Log;
+
 public class Cast extends Person {
 
 	private String[] character;
@@ -13,18 +15,19 @@ public class Cast extends Person {
 		JSONArray chars;
 
 		try {
-			this.name = json.getString("name");
-			chars = json.getJSONArray("characters");
-			if (chars.length() > 0) {
-				this.character = new String[chars.length()];
-				for (int i=0; i < chars.length(); i++) {
-					try {
-						this.character[i] = chars.getString(i);
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-				}
-			}
+			name = json.getString("name");
+//			Log.d("debug", name);
+//			chars = json.getJSONArray("characters");
+//			if (chars.length() > 0) {
+//				this.character = new String[chars.length()];
+//				for (int i=0; i < chars.length(); i++) {
+//					try {
+//						this.character[i] = chars.getString(i);
+//					} catch (JSONException e) {
+//						e.printStackTrace();
+//					}
+//				}
+//			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

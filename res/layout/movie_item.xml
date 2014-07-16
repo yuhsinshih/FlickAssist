@@ -5,8 +5,8 @@
 
     <ImageView
         android:id="@+id/ivMovieThumb"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
@@ -20,8 +20,44 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/ivMovieThumb"
         android:layout_toRightOf="@+id/ivMovieThumb"
-        android:textColor="#00FFFF"
-        android:text="Movie Title"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textColor="#FF0000"
+        android:text="Movie Title" />
+
+    <TextView
+        android:id="@+id/tvRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvMovieTitle"
+        android:layout_below="@+id/tvMovieTitle"
+        android:text="Rating"
+        android:textColor="#FF0000" />
+    
+        <TextView
+        android:id="@+id/tvYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvDuration"
+        android:layout_alignParentRight="true"
+        android:text="Movie Year"
+        android:textColor="#FF0000" />
+
+    <TextView
+        android:id="@+id/tvDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvRating"
+        android:layout_alignBottom="@+id/tvRating"
+        android:layout_alignParentRight="true"
+        android:text="Duration"
+        android:textColor="#FF0000" />
+
+    <TextView
+        android:id="@+id/tvCast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvRating"
+        android:layout_toRightOf="@+id/ivMovieThumb"
+        android:textColor="#FF0000"
+        android:text="Cast" />
 
 </RelativeLayout>

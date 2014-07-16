@@ -17,6 +17,7 @@ public class Movie {
 	private int critics_score;
 	private int audience_score;
 	private String synopsis;
+	private String genre;
 	private ArrayList<Cast> casts;
 	private String poster_thumb;
 	private String poster_profile;
@@ -24,7 +25,7 @@ public class Movie {
 	private String poster_original;
 
 	public Movie (JSONObject json) {
-		JSONObject posters;
+		JSONObject posters, ratings;
 		JSONArray castArray;
 		try {
 			id = json.getInt("id");
@@ -37,16 +38,23 @@ public class Movie {
 			poster_detailed = posters.getString("detailed");
 			poster_original = posters.getString("original");
 			
+			ratings = json.getJSONObject("ratings");
+			critics_score = ratings.getInt("critics_score");
+			audience_score = ratings.getInt("audience_score");
+			
 //			imdbid = json.getInt("imdbid");
 			runtime = json.getInt("runtime");
 			synopsis = json.getString("synopsis");
 		
 			
-//			castArray = json.getJSONArray("abridged_cast");
-//			casts = new ArrayList<Cast>();
-//			for (int i = 0; i < castArray.length(); i++) {
-//				casts.add(new Cast(castArray.getJSONObject(i)));
-//			}
+			castArray = json.getJSONArray("abridged_cast");
+//			Log.d("debug", castArray.toString());
+			casts = new ArrayList<Cast>();
+			for (int i = 0; i < castArray.length(); i++) {
+				casts.add(new Cast(castArray.getJSONObject(i)));
+				Log.d("debug", casts.get(i).getName());
+//				Log.d("debug", casts.toString());
+			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -125,9 +133,18 @@ public class Movie {
 		return poster_original;
 	}
 	
+	public String getCasts() {
+		StringBuffer sb = new StringBuffer();
+//		Log.d("debug", "case size: "+casts.size());
+		for (int i=0; i < casts.size(); i++ ) {
+			sb.append(casts.get(i).getName() + ",");
+		}
+		return sb.toString();
+	}
+	
 	@Override
 	public String toString() {
-		return title + " (" + year +")";
+		return title;
 	}
 
 }

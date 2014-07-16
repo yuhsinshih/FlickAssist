@@ -42,6 +42,18 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie>{
 		TextView tvMovieTitle = (TextView) v.findViewById(R.id.tvMovieTitle);
 		tvMovieTitle.setText(movie.getTitle());
 		
+		TextView tvYear = (TextView) v.findViewById(R.id.tvYear);
+		tvYear.setText("(" +movie.getYear() +")");
+		
+		TextView tvDuration = (TextView) v.findViewById(R.id.tvDuration);
+		tvDuration.setText(movie.getRuntime() + "m");
+		
+		TextView tvRating = (TextView) v.findViewById(R.id.tvRating);
+		tvRating.setText(String.valueOf(movie.getCritics_score()));
+		
+//		TextView tvCast = (TextView) v.findViewById(R.id.tvCast);
+//		tvCast.setText(movie.getCasts());
+		
 		ImageView ivMovieThumb = (ImageView) v.findViewById(R.id.ivMovieThumb);
 		ivMovieThumb.setImageResource(android.R.color.transparent);
 		ImageLoader imageLoader = ImageLoader.getInstance();
