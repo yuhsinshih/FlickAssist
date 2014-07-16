@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+     >
 
     <ImageView
         android:id="@+id/ivMovieThumb"
@@ -18,9 +19,11 @@
         android:id="@+id/tvMovieTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ivMovieThumb"
+        android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/ivMovieThumb"
-        android:textColor="#FF0000"
+        android:textColor="#e6c92d"
+        android:textStyle="bold"
+        android:paddingTop="3dp"
         android:text="Movie Title" />
 
     <TextView
@@ -30,7 +33,7 @@
         android:layout_alignLeft="@+id/tvMovieTitle"
         android:layout_below="@+id/tvMovieTitle"
         android:text="Rating"
-        android:textColor="#FF0000" />
+        android:textColor="#FFFFFF" />
     
     <TextView
         android:id="@+id/tvYear"
@@ -40,7 +43,7 @@
         android:layout_above="@+id/tvDuration"
         android:layout_alignParentRight="true"
         android:text="Movie Year"
-        android:textColor="#FF0000" />
+        android:textColor="#e6c92d" />
 
     <TextView
         android:id="@+id/tvDuration"
@@ -51,7 +54,7 @@
         android:layout_alignBottom="@+id/tvRating"
         android:layout_alignParentRight="true"
         android:text="Duration"
-        android:textColor="#FF0000" />
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/tvCast"
@@ -59,8 +62,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvRating"
         android:layout_toRightOf="@+id/ivMovieThumb"
-        android:textColor="#FF0000"
+        android:textColor="#FFFFFF"
         android:textSize="12sp"
+        android:paddingBottom="3dp"
         android:text="Cast" />
 
 </RelativeLayout>

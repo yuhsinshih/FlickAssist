@@ -5,6 +5,7 @@
     android:orientation="vertical" >
     
     <ListView
+        style="@style/dividedListStyle"
         android:id="@+id/lvMovies"
         android:layout_width="wrap_content"
         android:layout_height="match_parent" >
