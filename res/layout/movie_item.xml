@@ -7,7 +7,7 @@
         android:id="@+id/ivMovieThumb"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_alignParentLeft="true"
@@ -32,8 +32,9 @@
         android:text="Rating"
         android:textColor="#FF0000" />
     
-        <TextView
+    <TextView
         android:id="@+id/tvYear"
+        android:layout_marginRight="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/tvDuration"
@@ -43,6 +44,7 @@
 
     <TextView
         android:id="@+id/tvDuration"
+        android:layout_marginRight="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tvRating"
@@ -58,6 +60,7 @@
         android:layout_below="@+id/tvRating"
         android:layout_toRightOf="@+id/ivMovieThumb"
         android:textColor="#FF0000"
+        android:textSize="12sp"
         android:text="Cast" />
 
 </RelativeLayout>

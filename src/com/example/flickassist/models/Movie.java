@@ -13,7 +13,7 @@ public class Movie {
 	private int id;	// int or long?
 	private int imdbid;
 	private int year;
-	private int runtime;
+	private String runtime;
 	private int critics_score;
 	private int audience_score;
 	private String synopsis;
@@ -41,20 +41,17 @@ public class Movie {
 			ratings = json.getJSONObject("ratings");
 			critics_score = ratings.getInt("critics_score");
 			audience_score = ratings.getInt("audience_score");
-			
-//			imdbid = json.getInt("imdbid");
-			runtime = json.getInt("runtime");
-			synopsis = json.getString("synopsis");
-		
-			
+
 			castArray = json.getJSONArray("abridged_cast");
-//			Log.d("debug", castArray.toString());
 			casts = new ArrayList<Cast>();
 			for (int i = 0; i < castArray.length(); i++) {
 				casts.add(new Cast(castArray.getJSONObject(i)));
-				Log.d("debug", casts.get(i).getName());
-//				Log.d("debug", casts.toString());
 			}
+
+			runtime = json.getString("runtime");
+			synopsis = json.getString("synopsis");
+		
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -98,16 +95,16 @@ public class Movie {
 		return year;
 	}
 
-	public int getRuntime() {
-		return runtime;
+	public String getRuntime() {
+		return  ("".equals(runtime)) ? "N/A" : runtime + "m";
 	}
 
-	public int getCritics_score() {
-		return critics_score;
+	public String getCritics_score() {
+		return (critics_score > 0) ? String.valueOf(critics_score) : "N/A";
 	}
 
-	public int getAudience_score() {
-		return audience_score;
+	public String getAudience_score() {
+		return (audience_score > 0) ? String.valueOf(audience_score) : "N/A";
 	}
 
 	public String getSynopsis() {
@@ -134,10 +131,12 @@ public class Movie {
 	}
 	
 	public String getCasts() {
-		StringBuffer sb = new StringBuffer();
-//		Log.d("debug", "case size: "+casts.size());
-		for (int i=0; i < casts.size(); i++ ) {
-			sb.append(casts.get(i).getName() + ",");
+		if(casts == null || casts.size() == 0)
+			return "N/A";
+
+		StringBuffer sb = new StringBuffer(casts.get(0).getName());
+		for (int i=1; i < casts.size() ; i++ ) {
+			sb.append(", " + casts.get(i).getName());
 		}
 		return sb.toString();
 	}

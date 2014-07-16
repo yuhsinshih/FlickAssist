@@ -8,7 +8,8 @@ import com.activeandroid.util.Log;
 
 public class Cast extends Person {
 
-	private String[] character;
+//	private String[] character;
+	private String id;
 
 	public Cast (JSONObject json) {
 		
@@ -16,6 +17,7 @@ public class Cast extends Person {
 
 		try {
 			name = json.getString("name");
+			id = json.getString("id");
 //			Log.d("debug", name);
 //			chars = json.getJSONArray("characters");
 //			if (chars.length() > 0) {
@@ -32,23 +34,27 @@ public class Cast extends Person {
 			e.printStackTrace();
 		}
 	}
-
-	public String[] getCharacter() {
-		return this.character;
+	
+	public String getId () {
+		return id;
 	}
 
-	@Override
-	public String toString() {
-
-		if (this.character != null && this.character.length > 0) {
-			StringBuffer sb = new StringBuffer(this.character[0]);
-
-			for (int i=1; i < this.character.length; i++) {
-				sb.append(this.character[i]);
-			}
-			return sb.toString();
-		} else {
-			return "";
-		}
-	}
+//	public String[] getCharacter() {
+//		return this.character;
+//	}
+//
+//	@Override
+//	public String toString() {
+//
+//		if (this.character != null && this.character.length > 0) {
+//			StringBuffer sb = new StringBuffer(this.character[0]);
+//
+//			for (int i=1; i < this.character.length; i++) {
+//				sb.append(this.character[i]);
+//			}
+//			return sb.toString();
+//		} else {
+//			return "";
+//		}
+//	}
 }
