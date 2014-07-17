@@ -21,7 +21,6 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie>{
 
 	public MovieArrayAdapter(Context context, List<Movie> movies) {
 		super(context, 0, movies);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

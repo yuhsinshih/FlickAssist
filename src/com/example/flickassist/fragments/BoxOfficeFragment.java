@@ -25,6 +25,7 @@ public class BoxOfficeFragment extends MovieListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		total = 25;	// Box office data doesn't have a 'total' value
 		populateMovieList(1, false);
 	}
 	
@@ -32,7 +33,7 @@ public class BoxOfficeFragment extends MovieListFragment {
 	public void populateMovieList(int page, boolean clear) {
 		final boolean clearResult = clear;
 
-		// Get top 30 box office movie
+		// Get top 25 box office movie
 		AsyncHttpClient client = new AsyncHttpClient();
 		client.get("http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=qg8r8sxqbq268r7mntbt6uy2&limit=30", 
 				new JsonHttpResponseHandler() {

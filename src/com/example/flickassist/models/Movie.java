@@ -1,46 +1,47 @@
 package com.example.flickassist.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
+public class Movie{
 
-public class Movie {
+	private static final long serialVersionUID = 3419012801650329810L;
 	private String title;
 	private String id;	// int or long?
-	private int imdbid;
+	private String imdbid;
 	private int year;
 	private String runtime;
 	private int critics_score;
 	private int audience_score;
 	private String synopsis;
-	private String genre;
 	private ArrayList<Cast> casts;
 	private String poster_thumb;
 	private String poster_profile;
 	private String poster_detailed;
 	private String poster_original;
+	private String alternate_link;
 
 	public Movie (JSONObject json) {
-		JSONObject posters, ratings;
+		JSONObject jsonObj;
 		JSONArray castArray;
 		try {
 			id = json.getString("id");
 			title = json.getString("title");
 			year = json.getInt("year");
 			
-			posters = json.getJSONObject("posters");
-			poster_thumb = posters.getString("thumbnail");
-			poster_profile = posters.getString("profile");
-			poster_detailed = posters.getString("detailed");
-			poster_original = posters.getString("original");
+			jsonObj = json.getJSONObject("posters");
+			poster_thumb = jsonObj.getString("thumbnail");
+			poster_profile = jsonObj.getString("profile");
+			poster_detailed = jsonObj.getString("detailed");
+			poster_original = jsonObj.getString("original");
 			
-			ratings = json.getJSONObject("ratings");
-			critics_score = ratings.getInt("critics_score");
-			audience_score = ratings.getInt("audience_score");
+			jsonObj = json.getJSONObject("ratings");
+			critics_score = jsonObj.getInt("critics_score");
+			audience_score = jsonObj.getInt("audience_score");
 
 			castArray = json.getJSONArray("abridged_cast");
 			casts = new ArrayList<Cast>();
@@ -50,8 +51,12 @@ public class Movie {
 
 			runtime = json.getString("runtime");
 			synopsis = json.getString("synopsis");
-		
+
+			jsonObj = json.getJSONObject("alternate_ids");
+			imdbid = jsonObj.getString("imdb");
 			
+			jsonObj = json.getJSONObject("links");
+			alternate_link = jsonObj.getString("alternate");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -83,7 +88,7 @@ public class Movie {
 		return id;
 	}
 	
-	public int getImdbId() {
+	public String getImdbId() {
 		return imdbid;
 	}
 	

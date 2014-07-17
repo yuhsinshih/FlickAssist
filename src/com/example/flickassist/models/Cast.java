@@ -19,9 +19,8 @@ public class Cast extends Person {
 		try {
 			name = json.getString("name");
 			id = json.getString("id");
-			chars = json.getJSONArray("characters");
-			
-			if (chars != null) {
+			if(json.has("characters")){
+				chars = json.getJSONArray("characters");
 				this.character = new String[chars.length()];
 				for (int i=0; i < chars.length(); i++) {
 					try {
