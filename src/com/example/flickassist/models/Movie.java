@@ -135,6 +135,9 @@ public class Movie{
 		return poster_original;
 	}
 	
+	public String getAlternate_link() {
+		return alternate_link;
+	}
 	public String getCasts() {
 		if(casts == null || casts.size() == 0)
 			return "N/A";
